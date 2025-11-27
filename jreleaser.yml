@@ -21,7 +21,7 @@ project:
   description: HelloWorld in Deno
   longDescription: HelloWorld in Deno
   links:
-    homepage: https://github.com/jreleaser/helloworld-deno
+    homepage: https://github.com/jreleaser/helloworld-deno-slsa
   authors:
     - Andres Almiray
   license: Apache-2.0

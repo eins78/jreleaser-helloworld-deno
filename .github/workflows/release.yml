@@ -8,7 +8,7 @@ on:
         required: true
 
 jobs:
-  release:
+  precheck:
     name: Release
     runs-on: ubuntu-latest
     steps:
@@ -71,3 +71,19 @@ jobs:
           path: |
             out/jreleaser/trace.log
             out/jreleaser/output.properties
+
+  release:
+    name: Release
+    needs: [ precheck ]
+    permissions:
+      contents: write
+      id-token: write
+      actions: read
+      packages: write
+    uses: jreleaser/jreleaser-slsa/.github/workflows/builder_slsa3_deno.yml@v1.3.0
+    with:
+      project-version: ${{ needs.precheck.outputs.VERSION }}
+      jreleaser-version: early-access
+      rekor-log-public: true
+    secrets:
+      github-token: ${{ secrets.GITHUB_TOKEN }}

@@ -6,7 +6,7 @@ on:
 
 jobs:
   precheck:
-    if: github.repository == 'jreleaser/helloworld-deno' && startsWith(github.event.head_commit.message, 'Releasing version') != true
+    if: github.repository == 'jreleaser/helloworld-deno-slsa' && startsWith(github.event.head_commit.message, 'Releasing version') != true
     runs-on: ubuntu-latest
     outputs:
       VERSION: ${{ steps.vars.outputs.VERSION }}
